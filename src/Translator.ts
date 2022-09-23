@@ -28,8 +28,17 @@ export class Translator{
             const rule: Rule = this.lang.rules.find(rule => rule.name === styleSet.rule)!;
             const expression = new RegExp(rule.pattern, 'g');
 
-            newCode = newCode.replace(expression, occurence => this.addStyle(occurence, styleSet));
+            newCode = newCode.replace(expression, (match, p1, offset, str,groups) => {
 
+                const target = groups['target'];
+                
+                const enclosed = this.addStyle(target, styleSet);
+
+                console.log(target);
+                console.log(enclosed);
+
+                return match.replace(target, enclosed);
+            });
         });
 
         return newCode;

@@ -1,5 +1,10 @@
 import { Lang, Theme } from "@makechtec/tlapali_dev";
-import { TagFactory } from "./TagFactory";
+export declare class TagFactory {
+    createStartTag(tagName: string, extraAttributes?: string): string;
+    createEndTag(tagName: string): string;
+    createStyleAttribute(style: string): string;
+    encloseTextWithTag(text: string, tagName: string, extraAttributes?: string): string;
+}
 export declare class Translator {
     private theme;
     private lang;
@@ -14,3 +19,9 @@ export declare class Translator {
     setTagFactory(tagFactory: TagFactory): void;
     setTagName(name: string): void;
 }
+/// <reference types="react" />
+export declare const Code: (props: {
+    theme: Theme;
+    lang: Lang;
+    children: any;
+}) => JSX.Element;

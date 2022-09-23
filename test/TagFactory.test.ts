@@ -1,4 +1,4 @@
-import {TagFactory} from '../../src/code_highlighter/TagFactory';
+import {TagFactory} from '../src/TagFactory';
 
 const tagFactory: TagFactory = new TagFactory();
 

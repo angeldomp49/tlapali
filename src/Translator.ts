@@ -34,9 +34,6 @@ export class Translator{
                 
                 const enclosed = this.addStyle(target, styleSet);
 
-                console.log(target);
-                console.log(enclosed);
-
                 return match.replace(target, enclosed);
             });
         });

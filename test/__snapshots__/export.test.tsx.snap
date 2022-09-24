@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testCode 1`] = `
+<div
+  dangerouslySetInnerHTML={
+    {
+      "__html": "
+              public class <span style="color: red;" >App</span> {
+                  private static String name;
+              }
+          ",
+    }
+  }
+/>
+`;

@@ -1,49 +1,51 @@
-import React from 'react';
-import {Code} from '../src/Code';
+import { Code } from '../src/Code';
 import renderer from 'react-test-renderer';
-import { Theme, Lang } from '@makechtec/tlapali_dev';
+import { Lang, Theme } from '@makechtec/tlapali_dev';
+import React from 'react';
 
-const exampleTheme: Theme = {
-    name: 'exampleTheme',
-    supportedLaguages: [
-        {
-            name: 'exampleLang',
-            styleSets: [
-                {
-                    rule: 'numbers',
-                    styles: [
-                        'color: red;'
-                    ]
+test('testCode', () => {
+
+    const exampleTheme: Theme = {
+        name: 'exampleTheme',
+        supportedLaguages: [
+            {
+                name: 'exampleLang',
+                styleSets: [
+                    {
+                        rule: 'numbers',
+                        styles: [
+                            'color: red;'
+                        ]
+                    }
+                ]
+            }
+        ]
+    };
+
+    const exampleLang: Lang = {
+        name: 'exampleLang',
+        keywords: [
+            'public'
+        ],
+        rules: [
+            {
+                name: 'numbers',
+                pattern: 'class\\s*(?<target>[A-z]*)\\s*\\{'
+            }
+        ]
+    };
+
+    const component = renderer.create(
+        <Code theme={exampleTheme} lang={exampleLang}>
+            {`
+                public class App {
+                    private static String name;
                 }
-            ]
-        }
-    ]
-};
+            `}
+        </Code>
+    );
 
-const exampleLang: Lang = {
-    name: 'exampleLang',
-    keywords: [
-        'public'
-    ],
-    rules: [
-        {
-            name: 'numbers',
-            pattern: '[0-9]'
-        }
-    ]
-};
+    const tree = component.toJSON();
 
-test('testCodeRender', () => {
-    
-    expect(true).toBe(true);
-  });
-
-// test('testCodeRender', () => {
-//     const tree = renderer.create(
-//         <Code theme={exampleTheme} lang={exampleLang} >
-//             3 3
-//         </Code>
-//     )
-//     .toJSON();
-//     expect(tree).toMatchSnapshot();
-//   });
+    expect(tree).toMatchSnapshot();
+});

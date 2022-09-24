@@ -14,10 +14,14 @@
 
         return(
             <Code theme={Makech} lang={Java}>
-                public class App {
-                    
-                }
+                {`
+                    public class App {
+                        private static final String name;
+                    }
+                `}
             </Code>
         );
 
     };
+
+Notice that the children component is a multi-line string enclosed by curly brackets and backquotes.

@@ -28,7 +28,7 @@
   },
   "types": "index.d.ts",
   "name": "@makechtec/tlapali",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Devuelve un componente react que permite mostrar código",
   "main": "index.js",
   "directories": {

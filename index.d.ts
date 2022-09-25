@@ -23,5 +23,5 @@ export declare class TagFactory {
 export declare const Code: (props: {
     theme: Theme;
     lang: Lang;
-    children: any;
+    children?: any;
 }) => JSX.Element;

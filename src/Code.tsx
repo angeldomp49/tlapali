@@ -13,7 +13,7 @@ export const Code = (props: {theme: Theme, lang: Lang, children?: any}) => {
     plainHTML = formatter.format(plainHTML);
 
     return(
-        <div dangerouslySetInnerHTML={{__html:plainHTML}} ></div>
+        <div style={props.theme.containerStyle} dangerouslySetInnerHTML={{__html:plainHTML}} ></div>
     );
 
 };

@@ -16,7 +16,10 @@ export class Stylist{
     }
 
     convert(code: string): string {
-        return this.applyStylesRecursivelly(code);
+        let newCode = code;
+        newCode = this.applyStylesRecursivelly(newCode);
+        newCode = this.applyKeywordStyles(newCode);
+        return newCode;
     }
 
     private applyStylesRecursivelly(code: string): string {
@@ -39,6 +42,32 @@ export class Stylist{
         });
 
         return newCode;
+    }
+
+    private applyKeywordStyles(code: string): string{
+
+        if(this.supportedLang.keywordsStyle == null){
+            return code;
+        }
+
+        let newCode = code;
+        const styles = this.supportedLang.keywordsStyle!;
+        const styleString =  this.tagFactory.createStyleAttribute(styles.join(' '));
+
+        this.lang.keywords.forEach(keyword => {
+
+            const expression = new RegExp("(\\W)(" + keyword + ")(\\s)", "g");
+
+            newCode = newCode.replace(expression, (match, p1, p2, p3, offset, str,groups) => {
+
+                const enclosedCode = this.tagFactory.encloseTextWithTag(p2, this.tagName, styleString);
+
+                return p1 + enclosedCode + p3;
+            });
+        });
+
+        return newCode;
+
     }
 
     private addStyle(code: string, styleSet: StyleSet): string{

@@ -15,6 +15,7 @@ export declare class Stylist {
     constructor(theme: Theme, lang: Lang);
     convert(code: string): string;
     private applyStylesRecursivelly;
+    private applyKeywordStyles;
     private addStyle;
     private selectSupportedLang;
     setTagFactory(tagFactory: TagFactory): void;

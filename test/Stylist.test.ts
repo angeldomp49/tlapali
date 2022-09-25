@@ -59,3 +59,48 @@ test('testConvertGroup', () => {
 
     expect(result).toBe('class <span style="color: red;" >App</span> {');
   });
+
+test("testKeywordsStyles", () => {
+
+    const exampleTheme: Theme = {
+        name: 'exampleTheme',
+        containerStyle: {
+            backgroundColor: '#FFFFFF',
+        },
+        supportedLaguages: [
+            {
+                name: 'exampleLang',
+                keywordsStyle: [
+                    "color: green;"
+                ],
+                styleSets: [
+                    {
+                        rule: 'numbers',
+                        styles: [
+                            'color: red;'
+                        ]
+                    }
+                ]
+            }
+        ]
+    };
+
+    const exampleLang: Lang = {
+        name: 'exampleLang',
+        keywords: [
+            'public'
+        ],
+        rules: [
+            {
+                name: 'numbers',
+                pattern: 'class\\s*(?<target>[A-z]*)\\s*\\{'
+            }
+        ]
+    };
+
+    const stylist: Stylist = new Stylist(exampleTheme, exampleLang);
+    let result = stylist.convert(' public class App {');
+
+    expect(result).toBe(' <span style="color: green;" >public</span> class <span style="color: red;" >App</span> {');
+
+});

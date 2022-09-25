@@ -1,7 +1,7 @@
 import { Lang, Rule, StyleSet, SupportedLanguage, Theme } from "@makechtec/tlapali_dev";
 import { TagFactory } from "./TagFactory";
 
-export class Translator{
+export class Stylist{
 
     private theme: Theme;
     private lang: Lang;

@@ -1,6 +1,12 @@
 /// <reference types="react" />
 import { Lang, Theme } from "@makechtec/tlapali_dev";
-export declare class Translator {
+export declare class TagFactory {
+    createStartTag(tagName: string, extraAttributes?: string): string;
+    createEndTag(tagName: string): string;
+    createStyleAttribute(style: string): string;
+    encloseTextWithTag(text: string, tagName: string, extraAttributes?: string): string;
+}
+export declare class Stylist {
     private theme;
     private lang;
     private tagFactory;
@@ -14,11 +20,8 @@ export declare class Translator {
     setTagFactory(tagFactory: TagFactory): void;
     setTagName(name: string): void;
 }
-export declare class TagFactory {
-    createStartTag(tagName: string, extraAttributes?: string): string;
-    createEndTag(tagName: string): string;
-    createStyleAttribute(style: string): string;
-    encloseTextWithTag(text: string, tagName: string, extraAttributes?: string): string;
+export declare class Formatter {
+    format(text: string): string;
 }
 export declare const Code: (props: {
     theme: Theme;

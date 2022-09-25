@@ -4,11 +4,7 @@ exports[`testCode 1`] = `
 <div
   dangerouslySetInnerHTML={
     {
-      "__html": "
-                public class <span style="color: red;" >App</span> {
-                    private static String name;
-                }
-            ",
+      "__html": "<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public class <span style="color: red;" >App</span> {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private static String name;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
     }
   }
 />
